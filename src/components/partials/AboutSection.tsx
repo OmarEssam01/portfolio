@@ -1,28 +1,27 @@
 import Button from '@/components/form/Button';
-import { FiCoffee } from 'react-icons/fi';
+import { FiCoffee, FiCode, FiServer, FiTool, FiSmile } from 'react-icons/fi';
 import { HiOutlineChartBar, HiOutlineFire, HiOutlineUsers } from 'react-icons/hi';
-import { FiCode, FiServer, FiTool, FiSmile } from 'react-icons/fi';
 
 const AboutSection = () => {
   const skillCategories = [
     {
       title: 'Frontend',
-      icon: <FiCode className="text-blue-400" size={20} />,
+      icon: FiCode,
       skills: ['JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'React.js', 'Angular', 'Tailwind CSS'],
     },
     {
       title: 'Backend',
-      icon: <FiServer className="text-blue-400" size={20} />,
+      icon: FiServer,
       skills: ['Node.js', 'Express.js', 'Nest.js', 'MongoDB'],
     },
     {
       title: 'Tools',
-      icon: <FiTool className="text-blue-400" size={20} />,
+      icon: FiTool,
       skills: ['Git', 'GitHub', 'Postman'],
     },
     {
       title: 'Soft Skills',
-      icon: <FiSmile className="text-blue-400" size={20} />,
+      icon: FiSmile,
       skills: ['Problem-Solving', 'Team Collaboration'],
     },
   ];
@@ -61,24 +60,29 @@ const AboutSection = () => {
 
         {/* Skills Grid */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          {skillCategories.map((category, idx) => (
-            <div key={idx} className="rounded-2xl  border border-gray-700 p-6 shadow-lg backdrop-blur-lg">
-              <div className="mb-4 flex items-center gap-2">
-                <span className="rounded-lg bg-blue-600/20 p-2">{category.icon}</span>
-                <h2 className="text-lg font-semibold">{category.title}</h2>
-              </div>
-              <div className="flex flex-wrap gap-3">
-                {category.skills.map((skill, i) => (
-                  <span
-                    key={i}
-                    className="rounded-lg border border-cyan-700 bg-cyan-900/40 px-3 py-1 text-sm text-cyan-300 transition hover:bg-cyan-700 hover:text-white"
-                  >
-                    {skill}
+          {skillCategories.map((category, idx) => {
+            const Icon = category.icon; // ✅ extract component
+            return (
+              <div key={idx} className="rounded-2xl border border-gray-700 p-6 shadow-lg backdrop-blur-lg">
+                <div className="mb-4 flex items-center gap-2">
+                  <span className="rounded-lg bg-blue-600/20 p-2">
+                    <Icon className="text-blue-400" size={20} /> {/* ✅ render here */}
                   </span>
-                ))}
+                  <h2 className="text-lg font-semibold">{category.title}</h2>
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  {category.skills.map((skill, i) => (
+                    <span
+                      key={i}
+                      className="rounded-lg border border-cyan-700 bg-cyan-900/40 px-3 py-1 text-sm text-cyan-300 transition hover:bg-cyan-700 hover:text-white"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
@@ -90,7 +94,6 @@ const AboutSection = () => {
           </div>
           <div>
             <h2 className="text-3xl font-bold">500+</h2>
-            {/* Previousky Projects Completed */}
             <p className="mt-1">Coding Hours</p>
           </div>
         </div>
