@@ -2,12 +2,14 @@ import Button from '@/components/form/Button';
 import { FiCoffee, FiCode, FiServer, FiTool, FiSmile } from 'react-icons/fi';
 import { HiOutlineChartBar, HiOutlineFire, HiOutlineUsers } from 'react-icons/hi';
 import { IconType } from 'react-icons';
+import { ComponentType } from 'react';
+import { IconBaseProps } from 'react-icons';
 
 const AboutSection = () => {
 
 const skillCategories: {
   title: string;
-  icon: IconType; // ✅ tell TS this is a React Icon component
+  icon: ComponentType<IconBaseProps>;
   skills: string[];
 }[] = [
   {
