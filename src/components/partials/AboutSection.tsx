@@ -1,30 +1,37 @@
 import Button from '@/components/form/Button';
 import { FiCoffee, FiCode, FiServer, FiTool, FiSmile } from 'react-icons/fi';
 import { HiOutlineChartBar, HiOutlineFire, HiOutlineUsers } from 'react-icons/hi';
+import { IconType } from 'react-icons';
 
 const AboutSection = () => {
-  const skillCategories = [
-    {
-      title: 'Frontend',
-      icon: FiCode,
-      skills: ['JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'React.js', 'Angular', 'Tailwind CSS'],
-    },
-    {
-      title: 'Backend',
-      icon: FiServer,
-      skills: ['Node.js', 'Express.js', 'Nest.js', 'MongoDB'],
-    },
-    {
-      title: 'Tools',
-      icon: FiTool,
-      skills: ['Git', 'GitHub', 'Postman'],
-    },
-    {
-      title: 'Soft Skills',
-      icon: FiSmile,
-      skills: ['Problem-Solving', 'Team Collaboration'],
-    },
-  ];
+
+const skillCategories: {
+  title: string;
+  icon: IconType; // ✅ tell TS this is a React Icon component
+  skills: string[];
+}[] = [
+  {
+    title: 'Frontend',
+    icon: FiCode,
+    skills: ['JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'React.js', 'Angular', 'Tailwind CSS'],
+  },
+  {
+    title: 'Backend',
+    icon: FiServer,
+    skills: ['Node.js', 'Express.js', 'Nest.js', 'MongoDB'],
+  },
+  {
+    title: 'Tools',
+    icon: FiTool,
+    skills: ['Git', 'GitHub', 'Postman'],
+  },
+  {
+    title: 'Soft Skills',
+    icon: FiSmile,
+    skills: ['Problem-Solving', 'Team Collaboration'],
+  },
+];
+
 
   return (
     <>
