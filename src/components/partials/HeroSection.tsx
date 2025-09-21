@@ -1,13 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { FiInstagram, FiTwitter, FiFacebook, FiDribbble, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
-
+import { FiInstagram, FiTwitter, FiFacebook, FiDribbble, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
 
 import Button from '@/components/form/Button';
 import HeroBackground from './HeroBackground';
-import  TypedText  from './TypedText';
-
+import TypedText from './TypedText';
 
 const HeroSection = () => {
   return (
@@ -21,12 +19,7 @@ const HeroSection = () => {
         <div className="mt-2 flex gap-1">
           {' '}
           I'm a{' '}
-          <TypedText
-            strings={['Frontend Developer', 'MEARN Fullstack Developer' ]}
-            typeSpeed={60}
-            backSpeed={30}
-            loop
-          />
+          <TypedText strings={['Frontend Developer', 'MEARN Fullstack Developer']} typeSpeed={60} backSpeed={30} loop />
         </div>
         <div className="mt-4  flex gap-5">
           <Link href="https://github.com/OmarEssam01">
@@ -45,7 +38,6 @@ const HeroSection = () => {
             </a>
           </Link>
         </div>
-        
       </div>
 
       <div className="absolute bottom-10 flex flex-col items-center ">

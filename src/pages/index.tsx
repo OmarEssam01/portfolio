@@ -17,7 +17,7 @@ import type { GetServerSideProps, NextPage } from 'next';
 const Home: NextPage = () => {
   return (
     <AppLayout title="Home">
-      <HeroSection  />
+      <HeroSection />
       <section id="about" className="container pt-20 pb-10">
         <AboutSection />
       </section>

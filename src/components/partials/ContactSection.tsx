@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import React, { useState } from "react";
-import Button from "@/components/form/Button";
-import Input from "@/components/form/Input";
-import TextArea from "@/components/form/Textarea";
-import SectionTitle from "@/components/shared/SectionTitle";
+import Image from 'next/image';
+import React, { useState } from 'react';
+import Button from '@/components/form/Button';
+import Input from '@/components/form/Input';
+import TextArea from '@/components/form/Textarea';
+import SectionTitle from '@/components/shared/SectionTitle';
 
 const ContactSection = () => {
   const [form, setForm] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
   });
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState<null | "success" | "error">(null);
+  const [status, setStatus] = useState<null | 'success' | 'error'>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -27,20 +27,20 @@ const ContactSection = () => {
     setStatus(null);
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       });
 
       if (res.ok) {
-        setStatus("success");
-        setForm({ name: "", email: "", subject: "", message: "" });
+        setStatus('success');
+        setForm({ name: '', email: '', subject: '', message: '' });
       } else {
-        setStatus("error");
+        setStatus('error');
       }
     } catch (error) {
-      setStatus("error");
+      setStatus('error');
     } finally {
       setLoading(false);
     }
@@ -57,13 +57,7 @@ const ContactSection = () => {
         </div>
         <div className="col-span-2">
           <div className="grid gap-8 md:grid-cols-2">
-            <Input
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              placeholder="Your Name"
-              required
-            />
+            <Input name="name" value={form.name} onChange={handleChange} placeholder="Your Name" required />
             <Input
               type="email"
               name="email"
@@ -75,22 +69,10 @@ const ContactSection = () => {
           </div>
 
           <div className="mt-8">
-            <Input
-              name="subject"
-              value={form.subject}
-              onChange={handleChange}
-              placeholder="Subject"
-              required
-            />
+            <Input name="subject" value={form.subject} onChange={handleChange} placeholder="Subject" required />
           </div>
           <div className="mt-8">
-            <TextArea
-              name="message"
-              value={form.message}
-              onChange={handleChange}
-              placeholder="Message"
-              required
-            />
+            <TextArea name="message" value={form.message} onChange={handleChange} placeholder="Message" required />
           </div>
           <div className="mt-8">
             <Button
@@ -98,15 +80,11 @@ const ContactSection = () => {
               disabled={loading}
               className="mt-5 bg-primary-500 px-8 font-semibold text-white hover:bg-primary-600 focus:ring-2 focus:ring-primary-200"
             >
-              {loading ? "Sending..." : "Send Message"}
+              {loading ? 'Sending...' : 'Send Message'}
             </Button>
 
-            {status === "success" && (
-              <p className="mt-3 text-green-600">✅ Message sent successfully!</p>
-            )}
-            {status === "error" && (
-              <p className="mt-3 text-red-600">❌ Something went wrong. Please try again.</p>
-            )}
+            {status === 'success' && <p className="mt-3 text-green-600">✅ Message sent successfully!</p>}
+            {status === 'error' && <p className="mt-3 text-red-600">❌ Something went wrong. Please try again.</p>}
           </div>
         </div>
       </form>

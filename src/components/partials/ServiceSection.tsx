@@ -25,7 +25,7 @@ const ServiceSection = () => {
   return (
     <>
       <SectionTitle>Services</SectionTitle>
-      <div className="mt-10 gap-8 flex justify-around">
+      <div className="mt-10 flex justify-around gap-8">
         {services.map((service, index) => (
           <div
             key={index}
@@ -37,7 +37,6 @@ const ServiceSection = () => {
           </div>
         ))}
       </div>
-
     </>
   );
 };

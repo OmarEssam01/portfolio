@@ -12,7 +12,7 @@ type ThemeContextType = {
 
 type ThemeProviderProps = {
   children: React.ReactNode;
-}
+};
 
 const ThemeContext = React.createContext<ThemeContextType | undefined>(undefined);
 

@@ -12,45 +12,42 @@ const Menu = () => {
   const { theme, toggleTheme } = useTheme();
 
   // ✅ Smooth scroll helper
-const scrollToSection = async (id: string) => {
-  if (router.pathname === "/") {
-    if (id === "home") {
-      window.scrollTo({ top: 0, behavior: "smooth" }); // ⬅️ special case
-      return;
-    }
-
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  } else {
-    await router.push("/");
-
-    setTimeout(() => {
-      if (id === "home") {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+  const scrollToSection = async (id: string) => {
+    if (router.pathname === '/') {
+      if (id === 'home') {
+        window.scrollTo({ top: 0, behavior: 'smooth' }); // ⬅️ special case
         return;
       }
 
       const section = document.getElementById(id);
       if (section) {
-        section.scrollIntoView({ behavior: "smooth", block: "start" });
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
-    }, 100);
-  }
-};
+    } else {
+      await router.push('/');
 
+      setTimeout(() => {
+        if (id === 'home') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          return;
+        }
 
+        const section = document.getElementById(id);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+  };
 
   // ✅ Common links for desktop + mobile
   const navLinks = [
-  { id: "home", label: "Home", type: "scroll" },
-  { id: "about", label: "About", type: "scroll" },
-  { id: "experience", label: "Experience", type: "scroll" },
-  { id: "works", label: "Works", type: "scroll" },
-  { id: "contact", label: "Contact", type: "route", path: "/contact" }, // 👈 new
-];
-
+    { id: 'home', label: 'Home', type: 'scroll' },
+    { id: 'about', label: 'About', type: 'scroll' },
+    { id: 'experience', label: 'Experience', type: 'scroll' },
+    { id: 'works', label: 'Works', type: 'scroll' },
+    { id: 'contact', label: 'Contact', type: 'route', path: '/contact' }, // 👈 new
+  ];
 
   return (
     <header className="header text-gray-700 dark:text-gray-200">
@@ -62,31 +59,30 @@ const scrollToSection = async (id: string) => {
         </a>
 
         {/* Desktop nav */}
-<ul className="ml-auto hidden items-center md:flex">
-  {navLinks.map((link) => (
-    <li key={link.id}>
-      {link.type === "scroll" ? (
-        <button
-          onClick={() => scrollToSection(link.id)}
-          className={classNames(
-            "inline-block px-4 font-semibold transition-colors duration-300 hover:text-primary-600 hover:underline",
-            { "text-primary-500": router.asPath === `/#${link.id}` }
-          )}
-        >
-          {link.label}
-        </button>
-      ) : (
-        <button
-          onClick={() => router.push(link.path!)} // 👈 go to /contact
-          className="inline-block px-4 font-semibold transition-colors duration-300 hover:text-primary-600 hover:underline"
-        >
-          {link.label}
-        </button>
-      )}
-    </li>
-  ))}
-</ul>
-
+        <ul className="ml-auto hidden items-center md:flex">
+          {navLinks.map((link) => (
+            <li key={link.id}>
+              {link.type === 'scroll' ? (
+                <button
+                  onClick={() => scrollToSection(link.id)}
+                  className={classNames(
+                    'inline-block px-4 font-semibold transition-colors duration-300 hover:text-primary-600 hover:underline',
+                    { 'text-primary-500': router.asPath === `/#${link.id}` }
+                  )}
+                >
+                  {link.label}
+                </button>
+              ) : (
+                <button
+                  onClick={() => router.push(link.path!)} // 👈 go to /contact
+                  className="inline-block px-4 font-semibold transition-colors duration-300 hover:text-primary-600 hover:underline"
+                >
+                  {link.label}
+                </button>
+              )}
+            </li>
+          ))}
+        </ul>
 
         {/* Theme toggle */}
         <button
@@ -152,34 +148,33 @@ const scrollToSection = async (id: string) => {
               </div>
 
               {/* Mobile nav links */}
-<nav className="mt-4 space-y-1 px-2">
-  {navLinks.map((link) =>
-    link.type === "scroll" ? (
-      <button
-        key={link.id}
-        onClick={() => {
-          scrollToSection(link.id);
-          setSidebarOpen(false);
-        }}
-        className="group flex w-full items-center px-2 py-2 text-base font-medium transition-colors duration-150 hover:text-primary-600"
-      >
-        {link.label}
-      </button>
-    ) : (
-      <button
-        key={link.id}
-        onClick={() => {
-          router.push(link.path!);
-          setSidebarOpen(false);
-        }}
-        className="group flex w-full items-center px-2 py-2 text-base font-medium transition-colors duration-150 hover:text-primary-600"
-      >
-        {link.label}
-      </button>
-    )
-  )}
-</nav>
-
+              <nav className="mt-4 space-y-1 px-2">
+                {navLinks.map((link) =>
+                  link.type === 'scroll' ? (
+                    <button
+                      key={link.id}
+                      onClick={() => {
+                        scrollToSection(link.id);
+                        setSidebarOpen(false);
+                      }}
+                      className="group flex w-full items-center px-2 py-2 text-base font-medium transition-colors duration-150 hover:text-primary-600"
+                    >
+                      {link.label}
+                    </button>
+                  ) : (
+                    <button
+                      key={link.id}
+                      onClick={() => {
+                        router.push(link.path!);
+                        setSidebarOpen(false);
+                      }}
+                      className="group flex w-full items-center px-2 py-2 text-base font-medium transition-colors duration-150 hover:text-primary-600"
+                    >
+                      {link.label}
+                    </button>
+                  )
+                )}
+              </nav>
             </div>
           </Transition.Child>
           <div className="w-14 flex-shrink-0" aria-hidden="true" />

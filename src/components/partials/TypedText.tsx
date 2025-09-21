@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from "react";
-import { Typed } from "react-typed"; // this is a JS class, not a React component
+import React, { useEffect, useRef } from 'react';
+import { Typed } from 'react-typed'; // this is a JS class, not a React component
 
 type TypedTextProps = {
   strings: string[];

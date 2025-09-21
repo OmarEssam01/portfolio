@@ -3,7 +3,8 @@ import { Service } from '@/types';
 export const services: Service[] = [
   {
     name: 'Frontend Developer',
-    description: 'Building sleek, responsive, and user-friendly interfaces with modern frameworks and design principles.',
+    description:
+      'Building sleek, responsive, and user-friendly interfaces with modern frameworks and design principles.',
     image: '/images/services/ui-ux.png',
   },
   {

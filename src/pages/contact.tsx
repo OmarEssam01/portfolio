@@ -16,7 +16,7 @@ const Contact = (props: Props) => {
     message: '',
   });
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState<null | "success" | "error">(null);
+  const [status, setStatus] = useState<null | 'success' | 'error'>(null);
 
   const handleChange = (field: string, value: string) => {
     setForm({ ...form, [field]: value });
@@ -35,13 +35,13 @@ const Contact = (props: Props) => {
       });
 
       if (res.ok) {
-        setStatus("success");
-        setForm({ name: "", email: "", subject: "", message: "" }); // reset
+        setStatus('success');
+        setForm({ name: '', email: '', subject: '', message: '' }); // reset
       } else {
-        setStatus("error");
+        setStatus('error');
       }
     } catch (error) {
-      setStatus("error");
+      setStatus('error');
     } finally {
       setLoading(false);
     }
@@ -75,14 +75,14 @@ const Contact = (props: Props) => {
               <Input
                 placeholder="Your Name"
                 value={form.name}
-                onChange={(e:any) => handleChange('name', e.target.value)}
+                onChange={(e: any) => handleChange('name', e.target.value)}
                 required
               />
               <Input
                 type="email"
                 placeholder="Email Address"
                 value={form.email}
-                onChange={(e:any) => handleChange('email', e.target.value)}
+                onChange={(e: any) => handleChange('email', e.target.value)}
                 required
               />
             </div>
@@ -91,7 +91,7 @@ const Contact = (props: Props) => {
               <Input
                 placeholder="Subject"
                 value={form.subject}
-                onChange={(e:any) => handleChange('subject', e.target.value)}
+                onChange={(e: any) => handleChange('subject', e.target.value)}
                 required
               />
             </div>
@@ -100,7 +100,7 @@ const Contact = (props: Props) => {
               <TextArea
                 placeholder="Message"
                 value={form.message}
-                onChange={(e:any) => handleChange('message', e.target.value)}
+                onChange={(e: any) => handleChange('message', e.target.value)}
                 required
               />
             </div>
@@ -111,15 +111,11 @@ const Contact = (props: Props) => {
                 disabled={loading}
                 className="mt-5 bg-primary-500 px-8 font-semibold text-white hover:bg-primary-600 focus:ring-2 focus:ring-primary-200"
               >
-                {loading ? "Sending..." : "Send Message"}
+                {loading ? 'Sending...' : 'Send Message'}
               </Button>
 
-              {status === "success" && (
-                <p className="mt-3 text-green-600">✅ Message sent successfully!</p>
-              )}
-              {status === "error" && (
-                <p className="mt-3 text-red-600">❌ Something went wrong. Please try again.</p>
-              )}
+              {status === 'success' && <p className="mt-3 text-green-600">✅ Message sent successfully!</p>}
+              {status === 'error' && <p className="mt-3 text-red-600">❌ Something went wrong. Please try again.</p>}
             </div>
           </div>
         </form>
